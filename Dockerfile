@@ -12,4 +12,4 @@ RUN apt-get update && \
     cd MyProject
 
 ENTRYPOINT ["python3"]
-CMD  ["runserver" , "0.0.0.0:8000"]
+CMD  ["manage.py", "runserver" , "0.0.0.0:8000"]
