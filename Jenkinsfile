@@ -35,7 +35,7 @@ pipeline {
             steps {
                 sh """
 
-                 docker run  -p 8000:8000 ${ImageName}:${ImageTag}
+                 docker run  -p 8000:8000 -d ${ImageName}:${ImageTag}
                 """
                 }
             }
