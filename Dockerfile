@@ -11,5 +11,5 @@ RUN apt-get update && \
     pip install -r requirements.txt
     
 
-ENTRYPOINT ["python3", "/app/MyProject/manage.py"]
+ENTRYPOINT ["python3", "manage.py"]
 CMD  ["runserver" , "0.0.0.0:8000"]
