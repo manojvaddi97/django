@@ -2,7 +2,7 @@ FROM ubuntu
 
 WORKDIR /app
 
-COPY requiremets.txt /app
+COPY requirements.txt /app
 
 COPY MyProject /app
 
