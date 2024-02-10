@@ -13,20 +13,20 @@ pipeline {
         stage('Git Checkout') {
                     when { expression { params.action == 'create'} }
             steps {
-                gitcheckout(
-                    branch: "main",
-                    url: "https://github.com/manojvaddi97/django.git"
-                )
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name:  'main' ]],
+                    userRemoteConfigs: [[ url: 'https://github.com/manojvaddi97/django.git' ]]
+                ])
             }
         }
         
         stage('Build Docker Image') {
                      when { expression { params.action == 'create'} }
             steps {
-                script{
-                   
-                   dockerBuild("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
-               }
+                sh """
+                 docker image build -t ${DockerHubUser}/${ImageName}:latest .
+                """
                 }
             }
         }
